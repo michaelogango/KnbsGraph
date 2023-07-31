@@ -6,4 +6,18 @@ body {
 a {
   color: #00B7FF;
 }
+canvas {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
 
+.chart-container {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 20px;
+}
