@@ -8,49 +8,87 @@ app.set('views', 'views');
 app.set('view engine', 'hbs');
 app.use(express.static('public'));
 
+app.use(express.json());
 
+app.post('/add-data', (request, response) => {
+    const { year, item, price } = request.body;
+    const graphData = readGraphData();
+  
+    try {
+      // Check if the year exists in the graphData, if not, create an empty array for it
+      if (!graphData.data[year]) {
+        graphData.data[year] = [];
+      }
+  
+      // Set the "id" field before adding the new data
+      const id = graphData.data[year].length; // Use the current length as the ID (index)
+      const newData = { id, name: item, price };
+  
+      // Add the new data to the corresponding year
+      graphData.data[year].push(newData);
+  
+      // Update the graph.json file with the new data
+      const fs = require('fs');
+      fs.writeFileSync('./graph.json', JSON.stringify(graphData, null, 2));
+  
+      response.sendStatus(200);
+    } catch (error) {
+      console.error('Error adding data:', error);
+      response.sendStatus(500);
+    }
+  });
+  
 app.get('/', (request, response) => {
     response.render('home');
 });
 
+// Function to read graph data from graph.json file
+function readGraphData() {
+  try {
+    const graphData = require('./graph.json');
+    return graphData;
+  } catch (error) {
+    console.error('Error reading graph data:', error);
+    return { data: {} };
+  }
+}
+
 app.get('/data', (request, response) => {
-    // Convert the dummyData object to JSON-serializable format
-    const jsonData = JSON.parse(JSON.stringify(graphData.data));
-    // Send the data as JSON response
-    response.json(jsonData);
+  const graphData = readGraphData();
+
+  // Send the data as JSON response
+  response.json(graphData.data);
 });
-// app.get('/data', (request, response) => {
-//     //The data here is just for demo
-//     // Send the graph data as JSON response
-//     console.log(graphData)
-//     response.json(graphData.data);
-//   });
+
+app.post('/add-data', (request, response) => {
+  const { year, item, price } = request.body;
+  const graphData = readGraphData();
+
+  try {
+    // Check if the year exists in the graphData, if not, create an empty array for it
+    if (!graphData.data[year]) {
+      graphData.data[year] = [];
+    }
+
+    // Set the "id" field before adding the new data
+    const id = graphData.data[year].length; // Use the current length as the ID (index)
+    const newData = { id, name: item, price };
+
+    // Add the new data to the corresponding year
+    graphData.data[year].push(newData);
+
+    // Update the graph.json file with the new data
+    const fs = require('fs');
+    fs.writeFileSync('./graph.json', JSON.stringify(graphData, null, 2));
+
+    response.sendStatus(200);
+  } catch (error) {
+    console.error('Error adding data:', error);
+    response.sendStatus(500);
+  }
+});
 
 
 app.listen(port);
 console.log(' hello server listening on port 3000');
 
-
-
-// const bodyParser = require('body-parser');
-// const fs = require('fs');
-
-// const jsonParser = bodyParser.json();
-// const fileName = 'graph.json';
-
-// Load data from file
-// let rawData = fs.readFileSync(fileName);
-// let data = JSON.parse(rawData);
-
-// // This is a RESTful GET web service
-// app.get('/students', (request, response) => {
-//     data.sort((a, b) => (a.name > b.name) ? 1 : -1 );
-//     response.send(data);
-// });
-
-// This is a RESTful POST web service
-// app.post('/students', jsonParser, (request, response) => {
-//     data.push(request.body);
-//     fs.writeFileSync(fileName, JSON.stringify(data, null, 2));
-//     response.end();
-// });

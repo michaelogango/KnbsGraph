@@ -1,20 +1,18 @@
 {
-    "data": {
-      "2000": [
-        { "name": "Rice", "price": 200 },
-        { "name": "unga", "price": 150 },
-        { "name": "Apples", "price": 20 }
-      ],
-      "2001": [
-        { "name": "Rice", "price": 210 },
-        { "name": "unga", "price": 130 },
-        { "name": "Apples", "price": 70 }
-      ],
-      "2002": [
-        { "name": "Rice", "price": 220 },
-        { "name": "unga", "price": 150 },
-        { "name": "Apples", "price": 100 }
-      ]
-    }
+  "data": {
+    "2000": [
+      {
+        "id": 0,
+        "name": "Mango",
+        "price": 35
+      }
+    ],
+    "2001": [
+      {
+        "id": 0,
+        "name": "Napkins",
+        "price": 54
+      }
+    ]
   }
-  
+}
