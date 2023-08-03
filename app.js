@@ -33,7 +33,7 @@ console.log(' hello server listening on port 3000');
 
 
 // const bodyParser = require('body-parser');
-// const fs = require('fs');
+ const fs = require('fs');
 
 // const jsonParser = bodyParser.json();
 // const fileName = 'graph.json';
@@ -54,3 +54,22 @@ console.log(' hello server listening on port 3000');
 //     fs.writeFileSync(fileName, JSON.stringify(data, null, 2));
 //     response.end();
 // });
+// util functions
+const saveData = (data) => {
+    const stringifyData = JSON.stringify(data)
+    fs.writeFileSync(graphData, stringifyData)
+}
+const getData = () => {
+    const jsonData = fs.readFileSync(graphData)
+    return JSON.parse(jsonData)   
+}
+// delete - using delete method
+app.delete('/data/${year}', (req, res) => {
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+      var existItems = getData()
+      const itemYear = req.params['year'];
+      delete existItems[itemYear]; 
+      saveData(existItems);
+      res.send(`accounts with id ${itemYear} has been deleted`)
+    }, true);
+  })
