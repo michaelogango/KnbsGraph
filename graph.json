@@ -1,10 +1,17 @@
 {
   "data": {
+    "1946": [
+      {
+        "id": 0,
+        "name": "Water",
+        "price": 50
+      }
+    ],
     "2000": [
       {
         "id": 0,
-        "name": "Mango",
-        "price": 35
+        "name": "Soda",
+        "price": 50
       }
     ],
     "2001": [
@@ -13,6 +20,14 @@
         "name": "Napkins",
         "price": 54
       }
-    ]
+    ],
+    "2004": [
+      {
+        "id": 0,
+        "name": "Samosa",
+        "price": 54
+      }
+    ],
+    "2024": []
   }
 }

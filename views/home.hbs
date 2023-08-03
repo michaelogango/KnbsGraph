@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/stylesheets/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>The Kenya National Bureau of Statistics</title>
 </head>
@@ -15,11 +16,15 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div>
-                <p class="text-gray-700">The Kenya National Bureau of Statistics (KNBS) is the official government agency responsible for collecting, analyzing, and disseminating statistical data in Kenya. Established in 1945, the bureau plays a crucial role in providing accurate, reliable, and up-to-date information on various aspects of the country's economy, society, and demographics.</p>
+                <p class="text-gray-700">The Kenya National Bureau of Statistics (KNBS) is the official government
+                    agency responsible for collecting, analyzing, and disseminating statistical data in Kenya.
+                    Established in 1945, the bureau plays a crucial role in providing accurate, reliable, and up-to-date
+                    information on various aspects of the country's economy, society, and demographics.</p>
             </div>
             <div>
                 <label for="TheYear" class="block font-semibold mb-2">Select Year:</label>
-                <select id="TheYear" class="w-full py-2 px-4 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring focus:border-blue-500">
+                <select id="TheYear"
+                    class="w-full py-2 px-4 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring focus:border-blue-500">
                     <option value="2000">2000</option>
                     <option value="2001">2001</option>
                     <option value="2002">2002</option>
@@ -29,8 +34,8 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="card p-4 shadow-md rounded-md">
-                    <canvas id="Graph"></canvas>
-                </div>
+                <canvas id="Graph"></canvas>
+            </div>
             <div>
                 <div class="card p-4 shadow-md rounded-md">
                     <h2 class="text-xl font-semibold mb-4">Add Data</h2>
@@ -56,10 +61,38 @@
                 </div>
             </div>
             <div>
-                
+
+            </div>
+        </div>
+
+    </div>
+    <!-- ... -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="card p-4 shadow-md rounded-md">
+            <canvas id="Graph"></canvas>
+        </div>
+        <div>
+
+            <div class="card p-4 shadow-md rounded-md mt-4">
+                <h2 class="text-xl font-semibold mb-4">Data Table</h2>
+                <table class="w-full">
+                    <thead>
+                        <tr>
+                            <th>Year</th> <!-- Add the "Year" column header -->
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataBody">
+                        <!-- Table rows will be dynamically added here -->
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+    <!-- ... -->
 
     <script src="./javascripts/main.js"></script>
 </body>
