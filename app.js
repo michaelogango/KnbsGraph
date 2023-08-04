@@ -2,13 +2,10 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const graphData = require('./graph.json');
-
-
-
-
+const path = require('path');
 app.set('views', 'views');
 app.set('view engine', 'hbs');
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, "public")));
 
 
 app.use(express.json());
@@ -43,7 +40,6 @@ app.post('/add-data', (request, response) => {
     response.sendStatus(200);
   } catch (error) {
     console.error('Error adding data:', error);
-    response.sendStatus(500);
   }
 });
 
@@ -59,8 +55,7 @@ function readGraphData() {
     const graphData = require('./graph.json');
     return graphData;
   } catch (error) {
-    console.error('Error reading graph data:', error);
-    return { data: {} };
+    console.error('Error editing data:', error);
   }
 }
 
@@ -131,7 +126,12 @@ app.post('/add-data', (request, response) => {
 });
 
 
+app.post('/update-data', (request, response) => {
+  const updatedData = request.body;
 
+  graphData.data = updatedData;
+  response.json({ message: 'Data updated successfully.' });
+});
 
 app.listen(port);
 console.log(' hello server listening on port 3000');

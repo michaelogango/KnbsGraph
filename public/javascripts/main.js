@@ -87,6 +87,13 @@ function displayTable(data) {
       const deleteCell = document.createElement('td');
       const deleteButton = document.createElement('button');
 
+      yearCell.setAttribute('contentEditable', 'true');
+      nameCell.setAttribute('contentEditable', 'true');
+      priceCell.setAttribute('contentEditable', 'true');
+      yearCell.setAttribute('contentEditable', 'true');
+
+
+
       yearCell.textContent = year; // Set the year value for the year cell
       idCell.textContent = item.id;
       nameCell.textContent = item.name;
@@ -160,6 +167,46 @@ async function deleteData(id, year) {
     console.error('Error deleting data:', error);
   }
 }
+async function modifyObject() {
+  try {
+    const tableRows = document.querySelectorAll('#dataBody tr');
+    const updatedData = {};
+
+    tableRows.forEach((row) => {
+      const year = row.cells[0].textContent;
+      const id = parseInt(row.cells[1].textContent);
+      const name = row.cells[2].textContent;
+      const price = parseInt(row.cells[3].textContent);
+
+      if (!updatedData[year]) {
+        updatedData[year] = [];
+      }
+
+      updatedData[year].push({ id, name, price });
+    });
+
+    // Send the updated data to the server to update the JSON file
+    await fetch('/update-data', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedData),
+    });
+
+    // Update the chart and table with the updated data
+    updateChart(TheYear.value);
+  } catch (error) {~
+    console.error('Error updating data:', error);
+  }
+}
+
+const element = document.getElementById('updateButton');
+element.addEventListener('click', (event) => {
+  event.preventDefault();
+  modifyObject();
+});
+
 // Listen for form submission event
 document.getElementById('dataForm').addEventListener('submit', addData);
 

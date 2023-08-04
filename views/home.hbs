@@ -12,8 +12,9 @@
 
 <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8">
-        <h1 class="text-4xl font-bold mb-4">Welcome to the National Bureau of Statistics</h1>
+        <img style="margin-left:50%; size:70%" src="/images/knbsLogo.png">
 
+        <h1 class="text-4xl font-bold mb-4">Welcome to the National Bureau of Statistics</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div>
                 <p class="text-gray-700">The Kenya National Bureau of Statistics (KNBS) is the official government
@@ -67,16 +68,14 @@
 
     </div>
     <!-- ... -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="card p-4 shadow-md rounded-md">
-            <canvas id="Graph"></canvas>
-        </div>
+    <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+
         <div>
 
             <div class="card p-4 shadow-md rounded-md mt-4">
                 <h2 class="text-xl font-semibold mb-4">Data Table</h2>
                 <table class="w-full">
-                    <thead>
+                    {{!-- <thead>
                         <tr>
                             <th>Year</th> <!-- Add the "Year" column header -->
                             <th>ID</th>
@@ -84,13 +83,24 @@
                             <th>Price</th>
                             <th>Delete</th>
                         </tr>
-                    </thead>
+                    </thead> --}}
                     <tbody id="dataBody">
                         <!-- Table rows will be dynamically added here -->
                     </tbody>
+
                 </table>
+
+            </div>
+            <div class="card p-4 shadow-md rounded-md mt-4">
+                <table class="w-full">
+                    <!-- ... (existing table headers) ... -->
+                </table>
+                <button id="updateButton" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md mt-4">
+                    Update
+                </button>
             </div>
         </div>
+
     </div>
     <!-- ... -->
 

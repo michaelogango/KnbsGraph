@@ -3,22 +3,35 @@
     "1946": [
       {
         "id": 0,
-        "name": "Water",
+        "name": "Water Bottle",
+        "price": 50
+      },
+      {
+        "id": 1,
+        "name": "Banana Milkshake",
+        "price": 20
+      },
+      {
+        "id": 2,
+        "name": "Pineapple Mint",
         "price": 50
       }
     ],
     "2000": [
       {
         "id": 0,
-        "name": "Soda",
+        "name": "Sprite",
         "price": 50
-      }
-    ],
-    "2001": [
+      },
       {
-        "id": 0,
-        "name": "Napkins",
-        "price": 54
+        "id": 1,
+        "name": "Fanta",
+        "price": 80
+      },
+      {
+        "id": 2,
+        "name": "Coke",
+        "price": 45
       }
     ],
     "2004": [
@@ -26,8 +39,18 @@
         "id": 0,
         "name": "Samosa",
         "price": 54
+      },
+      {
+        "id": 1,
+        "name": "Chapati",
+        "price": 20
+      },
+      {
+        "id": 2,
+        "name": "Smocha",
+        "price": 60
       }
     ],
-    "2024": []
+    "2029": []
   }
 }
